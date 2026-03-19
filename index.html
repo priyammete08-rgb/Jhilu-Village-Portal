@@ -14,8 +14,8 @@
 <meta property="og:title" content="Jhilu Village Portal">
 <meta property="og:description" content="Explore Jhilu Village - News, Students, Business and Local Services">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://your-site.netlify.app">
-<meta property="og:image" content="https://your-site.netlify.app/cover.jpg">
+<meta property="og:url" content="https://jhilu.netlify.app">
+<meta property="og:image" content="https://jhilu.netlify.app/cover.jpg">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
@@ -458,6 +458,8 @@ There are about 1,210 households in Jhilu village.
 
 <form name="add-data" method="POST" data-netlify="true" action="/success.html">
 
+<input type="hidden" name="form-name" value="add-data">
+
 <select name="type" required>
 <option value="">Select Type</option>
 <option value="student">Student</option>
@@ -474,6 +476,10 @@ There are about 1,210 households in Jhilu village.
 <input type="text" name="location" placeholder="Location">
 
 <button type="submit">Submit</button>
+
+</form>
+
+<!-- NOTE OUTSIDE FORM -->
 <div class="upload-note">
 <p>
 📢 <b>Want to upload your book?</b><br>
@@ -481,7 +487,6 @@ If you want to sell or donate your old books,<br>
 please send book photo & details on WhatsApp.
 </p>
 </div>
-</form>
 
 </section>
 <!-- REPORT -->
@@ -490,6 +495,8 @@ please send book photo & details on WhatsApp.
 <h2>Report Village Problem</h2>
 
 <form name="village-problem" method="POST" data-netlify="true" action="/success.html">
+
+<input type="hidden" name="form-name" value="village-problem">
 
 <input type="text" name="name" placeholder="Your Name" required>
 
@@ -501,8 +508,8 @@ please send book photo & details on WhatsApp.
 
 </form>
 
-</section>
-
+ </section>
+ <!--footer-->
 <footer class="footer">
 
 <div class="footer-container">
@@ -555,7 +562,7 @@ please send book photo & details on WhatsApp.
 
 <div class="social-links">
 
-<a href="#">Facebook</a>
+<a href="https://www.facebook.com/share/1Di7ZpFHce/" target="_blank">Facebook</a>
 <a href="#">YouTube</a>
 <a href="#">WhatsApp</a>
 
