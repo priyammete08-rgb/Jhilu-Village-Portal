@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Corner | Jhilu Village</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#f4f6f9;
+}
+
+/* Header */
+
+.header{
+background:#2e7d32;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+/* Section */
+
+.student-books{
+padding:40px 20px;
+text-align:center;
+}
+
+/* Grid */
+.book-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+max-width:900px;
+margin:auto;
+}
+
+/* Card */
+
+.book-card{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.book-card:hover{
+transform:translateY(-5px);
+}
+
+.book-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:6px;
+}
+
+.book-card h3{
+color:#2e7d32;
+margin-top:10px;
+}
+
+.book-card p{
+margin:4px 0;
+}
+
+/* Button */
+
+.book-card a{
+display:inline-block;
+margin-top:10px;
+background:#2e7d32;
+color:white;
+padding:7px 12px;
+border-radius:5px;
+text-decoration:none;
+}
+
+/* Footer */
+
+footer{
+background:#1b5e20;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:40px;
+}
+/*filter*/
+.filter-box{
+display:flex;
+gap:10px;
+justify-content:center;
+flex-wrap:wrap;
+margin-bottom:15px;
+}
+
+.filter-box input{
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+width:180px;
+}
+
+.filter-box select{
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.class-scroll{
+display:flex;
+overflow-x:auto;
+gap:10px;
+padding:10px;
+}
+
+.class-scroll button{
+flex:0 0 auto;
+padding:8px 14px;
+border:none;
+background:#2e7d32;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>Student Corner</h1>
+
+<p>Buy & Sell Old Books in Jhilu Village</p>
+
+</div>
+
+
+<section class="student-books">
+
+<h2>Available Books</h2>
+<div class="filter-box">
+
+<input type="text" id="search" placeholder="Search book...">
+
+<select id="priceFilter">
+<option value="all">All</option>
+<option value="free">Free</option>
+<option value="low">Low Price</option>
+<option value="high">High Price</option>
+</select>
+
+</div>
+
+<div class="class-scroll">
+
+<button onclick="setClass('all')">All</button>
+<button onclick="setClass('1')">1</button>
+<button onclick="setClass('2')">2</button>
+<button onclick="setClass('3')">3</button>
+<button onclick="setClass('4')">4</button>
+<button onclick="setClass('5')">5</button>
+<button onclick="setClass('6')">6</button>
+<button onclick="setClass('7')">7</button>
+<button onclick="setClass('8')">8</button>
+<button onclick="setClass('9')">9</button>
+<button onclick="setClass('10')">10</button>
+<button onclick="setClass('11')">11</button>
+<button onclick="setClass('12')">12</button>
+
+</div>
+
+<div id="bookGrid" class="book-grid"></div>
+</section>
+
+
+<footer>
+
+<p>Jhilu Village Portal | Student Book Exchange</p>
+
+</footer>
+
+
+<script>
+
+const books = [
+{ name:"Class 12 Physics", price:200, class:"12", phone:"9876543210", image:"math12.jpg"},
+{ name:"Math Book", price:0, class:"10", phone:"9876543211", image:"images/math-book.jpg"},
+{ name:"Chemistry", price:150, class:"11", phone:"9876543212", image:"images/chemistry-book.jpg"},
+{ name:"English", price:300, class:"9", phone:"9876543213", image:"images/english-book.jpg"}
+];
+
+let selectedClass = "all";
+
+function setClass(cls){
+selectedClass = cls;
+displayBooks();
+}
+
+function displayBooks(){
+
+let search = document.getElementById("search").value.toLowerCase();
+let priceFilter = document.getElementById("priceFilter").value;
+
+let container = document.getElementById("bookGrid");
+container.innerHTML = "";
+
+books.forEach(book => {
+
+let matchSearch = book.name.toLowerCase().includes(search);
+
+let matchClass = selectedClass === "all" || book.class === selectedClass;
+
+let matchPrice = true;
+
+if(priceFilter === "free"){
+matchPrice = book.price === 0;
+}
+else if(priceFilter === "low"){
+matchPrice = book.price > 0 && book.price <= 150;
+}
+else if(priceFilter === "high"){
+matchPrice = book.price > 150;
+}
+
+if(matchSearch && matchClass && matchPrice){
+
+container.innerHTML += `
+<div class="book-card">
+<img src="${book.image}">
+<h3>${book.name}</h3>
+<p>₹${book.price}</p>
+<a href="https://wa.me/91${book.phone}" target="_blank">WhatsApp</a>
+</div>
+`;
+
+}
+
+});
+
+}
+
+document.getElementById("search").addEventListener("input", displayBooks);
+document.getElementById("priceFilter").addEventListener("change", displayBooks);
+
+displayBooks();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Success | Jhilu Village</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#2e7d32,#66bb6a);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+}
+
+/* Box */
+.success-box{
+background:white;
+color:#333;
+padding:40px 30px;
+border-radius:15px;
+text-align:center;
+width:90%;
+max-width:350px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+animation:fadeIn 1s ease;
+}
+
+/* Tick Circle */
+.circle{
+width:80px;
+height:80px;
+border-radius:50%;
+background:#2e7d32;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:auto;
+animation:pop 0.5s ease;
+}
+
+/* Tick */
+.check{
+color:white;
+font-size:40px;
+animation:tick 0.6s ease;
+}
+
+/* Text */
+h2{
+margin-top:15px;
+color:#2e7d32;
+}
+
+p{
+margin:10px 0 20px;
+}
+
+/* Button */
+a{
+display:inline-block;
+padding:10px 20px;
+background:#2e7d32;
+color:white;
+border-radius:6px;
+text-decoration:none;
+transition:0.3s;
+}
+
+a:hover{
+background:#1b5e20;
+}
+
+/* Animations */
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes pop{
+0%{transform:scale(0);}
+100%{transform:scale(1);}
+}
+
+@keyframes tick{
+0%{transform:scale(0);}
+100%{transform:scale(1);}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="success-box">
+
+<div class="circle">
+<div class="check">✔</div>
+</div>
+
+<h2>Submitted Successfully</h2>
+
+<p>Your details have been received.<br>
+We will review and publish soon.</p>
+
+<a href="index.html">⬅ Back to Home</a>
+
+</div>
+<script>
+setTimeout(() => {
+window.location.href = "index.html";
+}, 4000);
+</script>
+</body>
+</html>

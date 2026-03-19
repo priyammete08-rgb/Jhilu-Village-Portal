@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <!-- Basic SEO -->
+<meta name="title" content="Jhilu Village Portal | Purba Bardhaman West Bengal">
+<meta name="description" content="Jhilu Village Portal - Mangolkote, Purba Bardhaman. Village news, student corner, local business, workers and services.">
+<meta name="keywords" content="Jhilu village, Jhilu mangolkote, Jhilu bardhaman, Jhilu gram panchayat, Jhilu student corner, Jhilu business">
+<meta name="author" content="Jhilu Village Portal">
+
+<!-- Mobile Friendly -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Open Graph (Facebook) -->
+<meta property="og:title" content="Jhilu Village Portal">
+<meta property="og:description" content="Explore Jhilu Village - News, Students, Business and Local Services">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://your-site.netlify.app">
+<meta property="og:image" content="https://your-site.netlify.app/cover.jpg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jhilu Village Portal">
+<meta name="twitter:description" content="Jhilu village information, student help and business directory">
+
+<!-- Robots -->
+<meta name="robots" content="index, follow">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jhilu Village Portal | Purba Bardhaman West Bengal</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">Jhilu Village</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav class="side-menu" id="menu">
+<div class="menu-close" onclick="closeMenu()">✖</div>
+<a href="#home" onclick="closeMenu()">Home</a>
+<a href="#service" onclick="closeMenu()">Services</a>
+<a href="panchayat.html" onclick="closeMenu()">Panchayat</a>
+<a href="business.html" onclick="closeMenu()">Business</a>
+<a href="student.html" onclick="closeMenu()">Student Corner</a>
+<a href="#news" onclick="closeMenu()">News</a>
+<a href="#gallery" onclick="closeMenu()">Gallery</a>
+<a href="#map" onclick="closeMenu()">Map</a>
+
+</nav>
+</header>
+
+
+<section class="hero" id="home">
+
+<h2>Welcome to Jhilu Village</h2>
+<p>Information • Services • Community</p>
+
+</section>
+
+
+<!-- ABOUT VILLAGE -->
+
+<section class="about">
+
+<h2>About Jhilu Village</h2>
+
+<p>
+Jhilu is a village located in Mangolkote block of Purba Bardhaman district,
+West Bengal, India. The village is governed by Jhilu-I Gram Panchayat.
+Jhilu is situated around 26 km from Katwa town and about 37 km from Bardhaman.
+</p>
+
+</section>
+
+
+<!-- VILLAGE INFO -->
+
+<section class="village-info">
+
+<h2>Village Information</h2>
+
+<table>
+
+<tr>
+<td>District</td>
+<td>Purba Bardhaman</td>
+</tr>
+
+<tr>
+<td>Police Station</td>
+<td>Mongalkote</td>
+</tr>
+
+<tr>
+<td>Post office</td>
+<td>Jhilu</td>
+</tr>
+
+<tr>
+<td>Block</td>
+<td>Mangolkote</td>
+</tr>
+
+<tr>
+<td>Gram Panchayat</td>
+<td>Jhilu-I</td>
+</tr>
+
+<tr>
+<td>Pincode</td>
+<td>713147</td>
+</tr>
+
+<tr>
+<td>Nearest Town</td>
+<td>Katwa (26 km)</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="stats">
+
+<div class="stat">
+<h3>5311</h3>
+<p>Population
+(2011 census)</p>
+</div>
+
+<div class="stat">
+<h3>4</h3>
+<p>Schools</p>
+</div>
+
+<div class="stat">
+<h3>1</h3>
+<p>Health Center</p>
+</div>
+
+</section>
+<section class="village-data">
+<h2>Village Data(2011 census)</h2>
+
+<div class="data-table-container">
+
+<table class="data-table">
+
+<tr>
+<th>Category</th>
+<th>Total</th>
+<th>Male</th>
+<th>Female</th>
+</tr>
+
+<tr>
+<td>Population</td>
+<td>5311</td>
+<td>2738</td>
+<td>2573</td>
+</tr>
+
+<tr>
+<td>Children (0-6)</td>
+<td>679</td>
+<td>349</td>
+<td>330</td>
+</tr>
+
+<tr>
+<td>Literacy</td>
+<td>3035</td>
+<td>1659</td>
+<td>1376</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+<!--weather-->
+<section class="weather-section">
+
+<h2>Live Weather</h2>
+
+<div id="weatherBox" class="weather-card">
+Loading...
+</div>
+
+</section>
+<!-- NOTICE POPUP -->
+
+<div id="popup" class="popup">
+ 
+<div class="popup-box">
+
+<span class="close" onclick="closePopup()">❌</span>
+
+<img src="jhilu.jpg" class="popup-img">
+
+<h2>Village Notice</h2>
+
+<p>
+Welcome to jhilu Village Portal.
+</p>
+
+</div>
+
+</div>
+<!--school-->
+<section class="school-section">
+
+<h2>Schools in Jhilu</h2>
+
+<div class="school-table-container">
+
+<table class="school-table">
+
+<tr>
+<th>School Name</th>
+<th>Type</th>
+</tr>
+
+<tr>
+<td>Jhilu A.H.M Institution</td>
+<td>Secondary School</td>
+</tr>
+
+<tr>
+<td>Jhilu F.P School</td>
+<td>Primary School</td>
+</tr>
+
+<tr>
+<td>Jhilu V.S.S Niketan</td>
+<td>Primary School</td>
+</tr>
+<tr>
+<td>Jhilu Paschim Para F.P school</td>
+<td>Primary School</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+<!--emergency number -->
+<section class="emergency">
+
+<h2>Emergency Contacts</h2>
+
+<div class="service-table">
+
+<div class="service-row">
+<span>Police</span>
+<a href="tel:100">100</a>
+</div>
+
+<div class="service-row">
+<span>Ambulance</span>
+<a href="tel:102">102</a>
+</div>
+
+<div class="service-row">
+<span>Fire Service</span>
+<a href="tel:101">101</a>
+</div>
+
+<div class="service-row">
+<span>Electric Complaint</span>
+<a href="tel:19121">19121</a>
+</div>
+
+</div>
+
+</section>
+<!-- SERVICES -->
+<section id="service"class="quick-services">
+
+<h2>Village  Services</h2>
+
+<div class="service-grid">
+
+<div class="service-card">
+<h3>📮 Post Office</h3>
+<p>Jhilu Post Office</p>
+</div>
+
+<div class="service-card">
+<h3>💻 CSC Center</h3>
+<p>village Online centre</p>
+</div>
+
+<div class="service-card">
+<h3>🏫 School</h3>
+<p>Jhilu Primary School</p>
+</div>
+
+<div class="service-card">
+<h3>🏥 Health Center</h3>
+<p>Jhilu HWC</p>
+</div>
+
+<div class="service-card">
+<h3>🏢 Panchayat</h3>
+<p>Jhilu-I Gram Panchayat</p>
+</div>
+
+<div class="service-card">
+<h3>🛒 Village Market</h3>
+<p>Local Shops & Grocery</p>
+</div>
+
+</div>
+
+</section>
+<section id="work"class="service-finder">
+
+<h2>Find Local Worker</h2>
+
+<div class="service-buttons">
+
+<button onclick="showWorker('electric')">Electrician</button>
+
+<button onclick="showWorker('plumber')">Plumber</button>
+
+<button onclick="showWorker('mason')">Rajmistri</button>
+
+</div>
+
+<div id="result" class="worker-list"></div>
+
+</section>
+<!-- NEWS -->
+<section class="news">
+
+<h2>Village News</h2>
+
+<div id="newsBox"></div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery" class="gallery">
+
+<h2>Village Gallery</h2>
+
+<div class="gallery-grid">
+
+<img src="jhilu.jpg">
+<img src="jhilu1.jpg">
+<img src="jhilu2.jpg">
+<img src="jhilu3.jpg">
+
+</div>
+
+</section>
+
+
+<!-- NEARBY VILLAGES -->
+
+<section class="nearby">
+
+<h2>Nearby Villages</h2>
+
+<ul>
+
+<li>Nabagram</li>
+<li>ichabattagram</li>
+<li>sinut</li>
+<li>Nutanhat</li>
+<li>Halimpur</li>
+<li>Mangalkot</li>
+<li>kunda</li>
+
+</ul>
+
+</section>
+
+
+<!-- MAP -->
+
+<section id="map" class="map">
+
+<h2>Village Location</h2>
+
+<iframe 
+src="https://maps.google.com/maps?q=23.5414063,87.9383822&z=14&output=embed"
+width="100%" height="350" style="border:0;">
+</iframe>
+
+</section>
+<!-- FAQ -->
+
+<section class="faq">
+
+<h2>FAQs about Jhilu</h2>
+
+<div class="faq-box">
+
+<details>
+<summary>Where is Jhilu located?</summary>
+<p>
+Jhilu village is located in Mangolkote block of Purba Bardhaman district,
+West Bengal, India.
+</p>
+</details>
+
+<details>
+<summary>What is the gram panchayat of Jhilu?</summary>
+<p>
+The Gram Panchayat of Jhilu is Jhilu-I.
+</p>
+</details>
+
+<details>
+<summary>What is the pincode of Jhilu?</summary>
+<p>
+The pincode of Jhilu is 713147.
+</p>
+</details>
+
+<details>
+<summary>What is the population of Jhilu?</summary>
+<p>
+According to the 2011 census, Jhilu village has a total population of 5,311 people.
+</p>
+</details>
+
+<details>
+<summary>How many households are there in Jhilu?</summary>
+<p>
+There are about 1,210 households in Jhilu village.
+</p>
+</details>
+
+</div>
+
+</section>
+<!--add  -->
+<section class="add-form">
+
+<h2>Add Your Details</h2>
+
+<form name="add-data" method="POST" data-netlify="true" action="/success.html">
+
+<select name="type" required>
+<option value="">Select Type</option>
+<option value="student">Student</option>
+<option value="grocery">Grocery Shop</option>
+<option value="worker">Worker</option>
+</select>
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="text" name="work" placeholder="Skill / Shop Type">
+
+<input type="text" name="phone" placeholder="Phone Number" required>
+
+<input type="text" name="location" placeholder="Location">
+
+<button type="submit">Submit</button>
+<div class="upload-note">
+<p>
+📢 <b>Want to upload your book?</b><br>
+If you want to sell or donate your old books,<br>
+please send book photo & details on WhatsApp.
+</p>
+</div>
+</form>
+
+</section>
+<!-- REPORT -->
+<section class="report">
+
+<h2>Report Village Problem</h2>
+
+<form name="village-problem" method="POST" data-netlify="true" action="/success.html">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="text" name="location" placeholder="Location" required>
+
+<textarea name="problem" placeholder="Describe the problem" required></textarea>
+
+<button type="submit">Submit</button>
+
+</form>
+
+</section>
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-col">
+<h3>Village</h3>
+<a href="#home">About Jhilu</a>
+<a href="#news">Village News</a>
+<a href="#map">Village Map</a>
+<a href="#gallery">Gallery</a>
+</div>
+
+<div class="footer-col">
+<h3>Services</h3>
+<a href="#work">Electrician</a>
+<a href="#work">Plumber</a>
+<a href="#work">Rajmistri</a>
+<a href="business.html">Business Directory</a>
+</div>
+
+<div class="footer-col">
+<h3>Government</h3>
+<a href="panchayat.html">Panchayat</a>
+<a href="#">Village Jobs</a>
+<a href="#">Village Events</a>
+<a href="#news">Public Notice</a>
+</div>
+
+<div class="footer-col">
+<h3>Legal</h3>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+
+</div>
+
+<!-- Visitor Counter -->
+
+<div class="visitor-box">
+
+<p>👀 Total Visitors</p>
+
+<img src="https://hitwebcounter.com/counter/counter.php?page=123456789&style=0006&nbdigits=6&type=page&initCount=0">
+
+</div>
+
+<!-- Social Links -->
+
+<div class="social-links">
+
+<a href="#">Facebook</a>
+<a href="#">YouTube</a>
+<a href="#">WhatsApp</a>
+
+</div>
+
+<!-- Google Translate -->
+
+<div id="google_translate_element"></div>
+
+<div class="footer-bottom">
+
+<p>© 2026 Jhilu Village Portal | Community Information Website |  All Rights Reserved.</p>
+
+</div>
+
+</footer>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="index.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "Where is Jhilu village located?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Jhilu village is located in Mangolkote block of Purba Bardhaman district in West Bengal, India."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What is the pincode of Jhilu?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "The pincode of Jhilu village is 713147."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Which gram panchayat governs Jhilu?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Jhilu village is governed by Jhilu-I Gram Panchayat."
+ }
+ }
+ ]
+}
+</script>
+</body>
+</html>
