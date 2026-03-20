@@ -22,16 +22,18 @@ background:#f4f6f9;
 background:#2e7d32;
 color:white;
 text-align:center;
-padding:20px;
+padding:15px;
 }
 
 /* Section */
 
 .student-books{
-padding:40px 20px;
+padding:15px 10px 10px;
 text-align:center;
 }
-
+.student-books h2{
+margin:10px 0;
+}
 /* Grid */
 .book-grid{
 display:grid;
@@ -189,16 +191,11 @@ cursor:pointer;
 
 </footer>
 
-
 <script>
 
-const books = [
-{ name:"Class 12 Physics", price:200, class:"12", phone:"9876543210", image:"math12.jpg"},
-{ name:"Math Book", price:0, class:"10", phone:"9876543211", image:"images/math-book.jpg"},
-{ name:"Chemistry", price:150, class:"11", phone:"9876543212", image:"images/chemistry-book.jpg"},
-{ name:"English", price:300, class:"9", phone:"9876543213", image:"images/english-book.jpg"}
-];
+const sheetURL = "https://docs.google.com/spreadsheets/d/14pmbfiRZSwm6XpxzfXtLNHF6kJ_AsQXFQEaRnimXqWA/export?format=csv";
 
+let books = [];
 let selectedClass = "all";
 
 function setClass(cls){
@@ -217,13 +214,12 @@ container.innerHTML = "";
 books.forEach(book => {
 
 let matchSearch = book.name.toLowerCase().includes(search);
-
 let matchClass = selectedClass === "all" || book.class === selectedClass;
 
 let matchPrice = true;
 
 if(priceFilter === "free"){
-matchPrice = book.price === 0;
+matchPrice = book.price == 0;
 }
 else if(priceFilter === "low"){
 matchPrice = book.price > 0 && book.price <= 150;
@@ -238,8 +234,9 @@ container.innerHTML += `
 <div class="book-card">
 <img src="${book.image}">
 <h3>${book.name}</h3>
-<p>₹${book.price}</p>
-<a href="https://wa.me/91${book.phone}" target="_blank">WhatsApp</a>
+<p>Seller: ${book.seller}</p>
+<p>${book.price == 0 ? "FREE" : "₹" + book.price}</p>
+<a href="https://wa.me/91${book.phone}?text=Hi, I want this book: ${book.name}" target="_blank">WhatsApp</a>
 </div>
 `;
 
@@ -249,12 +246,36 @@ container.innerHTML += `
 
 }
 
+fetch(sheetURL)
+.then(res => res.text())
+.then(data => {
+
+let rows = data.trim().split("\n").slice(1);
+
+books = rows.map(row => {
+
+let cols = row.split(",");
+
+return {
+name: cols[0],
+price: Number(cols[1]),
+class: cols[2],
+phone: cols[3],
+image: cols[4],
+seller: cols[5],
+status: cols[6]
+};
+
+}).filter(book => book.status.trim() !== "sold");
+
+displayBooks();
+
+});
+
 document.getElementById("search").addEventListener("input", displayBooks);
 document.getElementById("priceFilter").addEventListener("change", displayBooks);
 
-displayBooks();
 </script>
 
-
 </body>
-</html>
+  </html>
