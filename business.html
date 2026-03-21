@@ -1,101 +1,161 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Local Business Directory</title>
+
+<title>Jhilu Business Directory</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:#f4f6f9;
+background:linear-gradient(135deg,#e8f5e9,#f4f6f9);
 }
 
 /* Header */
 
-h1{
-background:#1b5e20;
+.header{
+background:linear-gradient(135deg,#1b5e20,#4caf50);
 color:white;
-padding:20px;
-margin:0;
+padding:22px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+letter-spacing:1px;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
 }
 
 /* Grid */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-padding:40px;
-max-width:1000px;
-margin:auto;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:18px;
+padding:18px;
 }
 
 /* Card */
 
 .card{
 background:white;
-padding:30px;
-border-radius:12px;
-box-shadow:0 4px 15px rgba(0,0,0,0.1);
-transition:0.3s;
+padding:25px 15px;
+border-radius:18px;
+text-align:center;
 cursor:pointer;
+position:relative;
+overflow:hidden;
+transition:0.4s;
+box-shadow:0 6px 20px rgba(0,0,0,0.1);
 }
+
+/* Icon */
+
+.icon{
+font-size:40px;
+margin-bottom:12px;
+}
+
+/* Text */
+
+.card p{
+margin:0;
+font-size:16px;
+font-weight:bold;
+color:#1b5e20;
+}
+
+/* Hover */
 
 .card:hover{
-transform:translateY(-6px);
-box-shadow:0 8px 25px rgba(0,0,0,0.2);
+transform:translateY(-8px) scale(1.03);
+box-shadow:0 12px 30px rgba(0,0,0,0.2);
 }
 
-/* Card Link */
+/* Click */
 
-.card a{
-text-decoration:none;
-color:#1b5e20;
-font-size:20px;
-font-weight:bold;
+.card:active{
+transform:scale(0.96);
+}
+
+/* Glow Effect */
+
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(0,255,0,0.3),transparent);
+transition:0.5s;
+}
+
+.card:hover::before{
+left:100%;
+}
+
+/* Floating animation */
+
+.card{
+animation:fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 /* Mobile */
 
 @media(max-width:600px){
-
 .grid{
-padding:20px;
+grid-template-columns:1fr 1fr;
+}
 }
 
-.card{
-padding:25px;
-}
-
-}
 </style>
 
 </head>
 
 <body>
 
-<h1>Local Business Directory</h1>
+<div class="header">
+🏪 Jhilu Business Directory
+</div>
 
 <div class="grid">
 
-<div class="card">
-<a href="grocery.html">Grocery Stores</a>
+<div class="card" onclick="goPage('grocery')">
+<div class="icon">🛒</div>
+<p>Grocery Stores</p>
 </div>
 
-<div class="card">
-<a href="cycle.html">Cycle Repair</a>
+<div class="card" onclick="goPage('cycle')">
+<div class="icon">🚲</div>
+<p>Cycle Repair</p>
 </div>
 
-<div class="card">
-<a href="sweet.html">Sweet Shops</a>
+<div class="card" onclick="goPage('sweet')">
+<div class="icon">🍬</div>
+<p>Sweet Shops</p>
 </div>
 
-<div class="card">
-<a href="medical.html">Medical Stores</a>
+<div class="card" onclick="goPage('medical')">
+<div class="icon">💊</div>
+<p>Medical Stores</p>
 </div>
 
 </div>
+
+<script>
+
+function goPage(type){
+window.location.href = "category.html?type=" + type;
+}
+
+</script>
 
 </body>
-</html>
+  </html>
