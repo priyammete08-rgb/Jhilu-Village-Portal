@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Category</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:linear-gradient(to right,#e8f5e9,#f4f6f9);
+}
+
+/* Header */
+
+.header{
+background:linear-gradient(135deg,#2e7d32,#66bb6a);
+color:white;
+padding:18px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Back Button */
+
+.back{
+margin:15px;
+display:inline-block;
+padding:10px 15px;
+background:#2e7d32;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-size:14px;
+transition:0.3s;
+}
+
+.back:hover{
+background:#1b5e20;
+}
+
+/* Result */
+
+#result{
+padding:15px;
+}
+
+/* Store Card */
+
+.store{
+background:white;
+padding:18px;
+margin-bottom:12px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+animation:fadeUp 0.5s ease;
+}
+
+.store:hover{
+transform:translateY(-5px);
+box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Text */
+
+.store h3{
+margin:0;
+color:#2e7d32;
+}
+
+.store p{
+margin:6px 0;
+}
+
+/* Button */
+
+.contact{
+display:inline-block;
+margin-top:8px;
+padding:8px 12px;
+background:#2e7d32;
+color:white;
+border-radius:6px;
+text-decoration:none;
+font-size:14px;
+}
+
+.contact:hover{
+background:#1b5e20;
+}
+
+/* Loading */
+
+.loading{
+text-align:center;
+font-size:18px;
+color:#555;
+margin-top:30px;
+}
+
+/* Animation */
+
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+.store{
+padding:15px;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+<h2 id="title">Stores</h2>
+</div>
+
+<a href="business.html" class="back">⬅ Back</a>
+
+<div id="result" class="loading">⏳ Loading stores...</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const type = params.get("type");
+
+document.getElementById("title").innerText = type.toUpperCase() + " STORES";
+
+const sheetURL = "https://docs.google.com/spreadsheets/d/13wzX7C6-I8s5upT49eQaoK7EP7yeEmp9vx7NwwnCzv4/export?format=csv";
+
+fetch(sheetURL)
+.then(res => res.text())
+.then(data => {
+
+let rows = data.trim().split("\n").slice(1);
+
+let container = document.getElementById("result");
+container.innerHTML = "";
+
+let found = false;
+
+rows.forEach(row => {
+
+let cols = row.split(",");
+
+if(cols[1].trim() === type){
+
+found = true;
+
+container.innerHTML += `
+<div class="store">
+<h3>${cols[0]}</h3>
+<p>📍 ${cols[3]}</p>
+<a class="contact" href="https://wa.me/91${cols[2]}" target="_blank">📞 Contact</a>
+</div>
+`;
+
+}
+
+});
+
+if(!found){
+container.innerHTML = "<p style='text-align:center;'>No stores found</p>";
+}
+
+});
+
+</script>
+
+</body>
+  </html>
