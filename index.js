@@ -14,59 +14,59 @@ document.getElementById("popup").style.display="none";
 }
 
 
+const sheetURL = "https://docs.google.com/spreadsheets/d/1RYLvuQz46OFP-E2gbcpukhhyZskIrHyGY-MdV3WlnVk/export?format=csv";
+
+let workers = [];
+
+async function loadData(){
+let res = await fetch(sheetURL);
+let data = await res.text();
+
+let rows = data.trim().split("\n").slice(1);
+
+workers = rows.map(row => {
+let cols = row.split(",");
+return {
+name: cols[0],
+work: cols[1],
+phone: cols[2],
+location: cols[3]
+};
+});
+}
+
+loadData();
+
 function showWorker(type){
 
-let result = document.getElementById("result");
+let container = document.getElementById("result");
 
-if(type==="electric"){
-result.innerHTML = `
+if(workers.length === 0){
+container.innerHTML = "⏳ Loading...";
+return;
+}
 
-<div class="worker-card">
-<h3>Raju Electrician</h3>
-<p>Jhilu Village</p>
-<a href="tel:9876543210">Call</a>
+let filtered = workers.filter(w => w.work.trim() === type);
+
+container.innerHTML = "";
+
+if(filtered.length === 0){
+container.innerHTML = "<p>No worker found</p>";
+return;
+}
+
+filtered.forEach(w => {
+container.innerHTML += `
+<div class="card">
+<h3>${w.name}</h3>
+<p>${w.work}</p>
+<p>📍 ${w.location}</p>
+<a href="https://wa.me/91${w.phone}">Contact</a>
 </div>
-
-<div class="worker-card">
-<h3>Suman Electric Works</h3>
-<p>Jhilu Village</p>
-<a href="tel:9876543211">Call</a>
-</div>
-
-<div class="worker-card">
-<h3>Arif Electric Service</h3>
-<p>Jhilu Village</p>
-<a href="tel:9876543212">Call</a>
-</div>
-
 `;
-}
+});
 
-if(type==="plumber"){
-result.innerHTML = `
-
-<div class="worker-card">
-<h3>Babu Plumber</h3>
-<p>Jhilu Village</p>
-<a href="tel:9876543220">Call</a>
-</div>
-
-`;
-}
-
-if(type==="mason"){
-result.innerHTML = `
-
-<div class="worker-card">
-<h3>Karim Rajmistri</h3>
-<p>Jhilu Village</p>
-<a href="tel:9876543230">Call</a>
-</div>
-
-`;
-}
-
-}
+  }
 const apiKey = "b6e0a8ef12c56ad6b01627cc71a9a5ee";
 
 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=23.54&lon=87.93&units=metric&appid=${apiKey}`)
