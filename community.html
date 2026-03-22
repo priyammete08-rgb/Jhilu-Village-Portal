@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jhilu Helping Community</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(to right,#f4f6f9,#e8f5e9);
+}
+
+.header{
+background:linear-gradient(135deg,#2e7d32,#66bb6a);
+color:white;
+text-align:center;
+padding:25px;
+}
+
+.section{
+padding:30px 20px;
+text-align:center;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+max-width:600px;
+margin:auto;
+}
+
+form input, form textarea, form select{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+background:#2e7d32;
+color:white;
+padding:12px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+#donorList p{
+background:#fff;
+padding:8px;
+margin:5px 0;
+border-radius:6px;
+}
+
+.progress{
+background:#ddd;
+height:20px;
+border-radius:10px;
+overflow:hidden;
+}
+
+#progressBar{
+height:20px;
+background:green;
+width:0%;
+}
+
+footer{
+background:#1b5e20;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:30px;
+}
+
+/* Card */
+.card{
+background:linear-gradient(135deg,#ffffff,#f1f8f5);
+padding:20px;
+border-radius:18px;
+box-shadow:0 6px 20px rgba(0,0,0,0.12);
+text-align:center;
+cursor:pointer;
+transition:all 0.3s ease;
+position:relative;
+overflow:hidden;
+}
+
+/* Title */
+.card h3{
+margin:0;
+color:#2e7d32;
+font-size:20px;
+}
+
+/* Text */
+.card p{
+margin-top:8px;
+color:#555;
+font-size:14px;
+}
+
+/* Hover Effect */
+.card:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 12px 35px rgba(0,0,0,0.2);
+}
+
+/* Glow effect */
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(0,255,0,0.2),transparent);
+transition:0.6s;
+}
+
+.card:hover::before{
+left:100%;
+}
+
+/* Active click */
+.card:active{
+transform:scale(0.97);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+<h1>Jhilu Helping Community ❤️</h1>
+<p>Manush Manusher Jonno</p>
+</div>
+<div class="card" onclick="goMembers()">
+<h3>👥 Community Members</h3>
+<p>View all verified members</p>
+</div>
+<!-- REQUEST FORM -->
+<section class="section">
+<div class="card">
+
+<h2>📩 Request / Help</h2>
+
+<form id="requestForm">
+
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="text" name="phone" placeholder="Phone Number" required>
+
+<select name="category">
+<option>Need Help</option>
+<option>Volunteer</option>
+</select>
+
+<textarea name="details" placeholder="Details"></textarea>
+
+<button type="submit">Submit Request</button>
+
+</form>
+
+</div>
+</section>
+
+<!-- DONATION -->
+<section class="section">
+<div class="card">
+
+<h2>❤️ Donate Now</h2>
+
+<img src="qr.png" width="200">
+<p><b>UPI ID:</b> priyam@upi</p>
+
+<form id="donationForm">
+
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="number" name="amount" placeholder="Amount ₹" required>
+<input type="text" name="phone" placeholder="Phone" required>
+
+<button type="submit">Donate</button>
+
+</form>
+
+</div>
+</section>
+
+<!-- TOP DONOR -->
+<section class="section">
+<h2>🏆 Top Donor</h2>
+<h3 id="topDonor">Loading...</h3>
+
+<h2>🎯 Progress</h2>
+<div class="progress">
+<div id="progressBar"></div>
+</div>
+<p id="progressText"></p>
+</section>
+
+<!-- DONOR LIST -->
+<section class="section">
+<h2>📊 Recent Donors</h2>
+<div id="donorList"></div>
+</section>
+
+<footer>
+<p>Jhilu Village Portal | Helping Community</p>
+</footer>
+
+<script>
+
+/* 🔥 YOUR SCRIPT URLS */
+const requestURL = "https://script.google.com/macros/s/AKfycbxOVorz1J9Jul7-0muVFu43jpkrmDsUZsIz4J2ZDffNWhpMazUb2dm1Iikh2WMhuq18fw/exec";
+const donationURL = "https://script.google.com/macros/s/AKfycbyx78YAMzaZowHPt2DxE6pyO4BxQpJBfUFzdtRTPrQQJbCWbYANaunQYyNJ8en0UNRR/exec";
+
+/*const sheetURL = "https://docs.google.com/spreadsheets/d/18f--FObs3mvlenIOJk6k5omr4oFPx6R16wDvHoqvNsA/gviz/tq?tqx=out:csv&sheet=Sheet1";*/
+
+/* REQUEST FORM */
+document.getElementById("requestForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+fetch(requestURL,{
+method:"POST",
+body:new FormData(this)
+})
+.then(()=>alert("Request Submitted"))
+.catch(()=>alert("Error"));
+
+});
+
+/* DONATION FORM */
+document.getElementById("donationForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+let formData = new FormData(this);
+
+fetch(donationURL,{
+method:"POST",
+body:formData
+})
+.then(()=>{
+alert("🙏 Thank you!");
+
+generateReceipt(formData.get("name"), formData.get("amount"));
+
+this.reset();
+});
+
+});
+
+/* RECEIPT */
+function generateReceipt(name, amount){
+
+let c=document.createElement("canvas");
+c.width=600; c.height=400;
+let ctx=c.getContext("2d");
+
+ctx.fillStyle="#fff";
+ctx.fillRect(0,0,600,400);
+
+ctx.fillStyle="green";
+ctx.font="bold 28px Arial";
+ctx.fillText("Donation Receipt",150,80);
+
+ctx.fillStyle="black";
+ctx.font="20px Arial";
+ctx.fillText("Name: "+name,100,180);
+ctx.fillText("Amount: ₹"+amount,100,220);
+
+let link=document.createElement("a");
+link.download="receipt.png";
+link.href=c.toDataURL();
+link.click();
+
+}
+
+/* আপনার সঠিক শিট আইডি এখানে বসান */
+const sheetID = "18f--FObs3mvlenIOJk6k5omr4oFPx6R16wDvHoqvNsA"; 
+const sheetURL = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
+
+/* LOAD DONATION DATA - RE-WRITTEN FOR STABILITY */
+function loadData() {
+    // প্রতিবার নতুন ডাটা আনতে টাইমস্ট্যাম্প যোগ করা
+    fetch(sheetURL + "&t=" + new Date().getTime())
+    .then(res => res.text())
+    .then(data => {
+        // ডাটাকে লাইন অনুযায়ী ভাগ করা
+        let rows = data.trim().split("\n");
+        let container = document.getElementById("donorList");
+        
+        // যদি ডাটা না থাকে
+        if (rows.length <= 1) {
+            container.innerHTML = "<p>No donations recorded yet.</p>";
+            document.getElementById("topDonor").innerText = "No donor";
+            return;
+        }
+
+        container.innerHTML = "";
+        let total = 0, max = 0, topDonorName = "";
+
+        // ২য় লাইন থেকে ডাটা পড়া শুরু (যেহেতু ১ম লাইনে হেডার থাকে)
+        for (let i = 1; i < rows.length; i++) {
+            // CSV এর কমা এবং কোটেশন হ্যান্ডেল করা
+            let columns = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+            
+            let name = columns[0] ? columns[0].replace(/"/g, "").trim() : "";
+            let amount = columns[1] ? parseFloat(columns[1].replace(/"/g, "").trim()) : 0;
+
+            if (name && !isNaN(amount) && amount > 0) {
+                total += amount;
+                
+                if (amount > max) {
+                    max = amount;
+                    topDonorName = name;
+                }
+                
+                // লিস্টে নাম যোগ করা
+                container.innerHTML += `<p>🙏 <b>${name}</b> donated ₹${amount}</p>`;
+            }
+        }
+
+        // 🏆 Top Donor আপডেট
+        document.getElementById("topDonor").innerText = topDonorName ? `${topDonorName} (₹${max})` : "No donor";
+
+        // 📊 Progress Bar আপডেট
+        let goal = 500;
+        let percent = Math.min((total / goal) * 100, 100);
+        document.getElementById("progressBar").style.width = percent + "%";
+        document.getElementById("progressText").innerText = `Collected: ₹${total} / Goal: ₹${goal}`;
+
+    })
+    .catch(err => {
+        console.error("Fetch Error:", err);
+        document.getElementById("topDonor").innerText = "Connection Error";
+    });
+}
+
+// পেজ লোড হলে কল হবে
+loadData();
+// প্রতি ১০ সেকেন্ড পর পর অটো আপডেট হবে
+setInterval(loadData, 10000);
+
+function goMembers(){
+window.location.href = "member.html";
+}
+</script>
+
+</body>
+</html>
